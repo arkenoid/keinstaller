@@ -22,3 +22,17 @@ repositories {
 dependencies {
     izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
 }
+
+izpack {
+	baseDir = file("$buildDir/assemble/izpack")
+	installFile = file('src/main/izpack/installer.xml')
+	outputFile = file("$buildDir/distributions/griffon-${version}-installer.jar")
+	compression = 'deflate'izpack {
+    baseDir = file("$buildDir/assemble/izpack")
+    installFile = file('installer/izpack/installer.xml')
+    outputFile = file("$buildDir/distributions/griffon-${version}-installer.jar")
+    compression = 'deflate'
+    compressionLevel = 9
+    appProperties = ['app.group': 'Griffon', 'app.name': 'griffon', 'app.title': 'Griffon',
+                     'app.version': version, 'app.subpath': "Griffon-$version"]
+}
