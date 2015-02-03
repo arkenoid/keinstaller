@@ -1,1 +1,2 @@
 # keinstaller
+gradle izPackCreateInstaller
