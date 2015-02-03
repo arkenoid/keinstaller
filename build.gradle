@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'com.bmuschko.izpack'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		classpath 'com.bmuschko:gradle-izpack-plugin:2.0'
+	}
+}
+
+repositories {
+    mavenCentral()
+	dependencies {
+		izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
+	}
+}
+
+dependencies {
+    izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
+}
