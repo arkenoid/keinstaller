@@ -2,37 +2,34 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'com.bmuschko.izpack'
 
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+dependencies {
+	izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
+}
+
 buildscript {
+	
 	repositories {
 		jcenter()
+		mavenCentral()
 	}
 
 	dependencies {
 		classpath 'com.bmuschko:gradle-izpack-plugin:2.0'
 	}
-}
 
-repositories {
-    mavenCentral()
-	dependencies {
-		izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
-	}
-}
-
-dependencies {
-    izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
 }
 
 izpack {
-	baseDir = file("$buildDir/assemble/izpack")
+	baseDir = file("src/main/izpack/resources")
 	installFile = file('src/main/izpack/installer.xml')
-	outputFile = file("$buildDir/distributions/griffon-${version}-installer.jar")
-	compression = 'deflate'izpack {
-    baseDir = file("$buildDir/assemble/izpack")
-    installFile = file('installer/izpack/installer.xml')
-    outputFile = file("$buildDir/distributions/griffon-${version}-installer.jar")
-    compression = 'deflate'
-    compressionLevel = 9
-    appProperties = ['app.group': 'Griffon', 'app.name': 'griffon', 'app.title': 'Griffon',
-                     'app.version': version, 'app.subpath': "Griffon-$version"]
+	outputFile = file("$buildDir/output-installer.jar")
+	compression = 'deflate'
+	compressionLevel = 9
+	appProperties = ['app.group': 'Griffon', 'app.name': 'griffon', 'app.title': 'Griffon',
+		'app.version': version, 'app.subpath': "Griffon-$version"]
 }
